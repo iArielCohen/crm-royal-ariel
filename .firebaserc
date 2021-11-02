@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "w170620e-royal-crm-1eb5a": {
+      "hosting": {
+        "royal-crm": [
+          "w170620e-royal-crm-1eb5a"
+        ]
+      }
+    }
+  }
+}

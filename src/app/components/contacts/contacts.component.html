@@ -1,0 +1,51 @@
+<app-page-header title="Contacts" description="company employees details" icon="bi bi-people-fill">
+</app-page-header>
+
+
+<div class="row mt-3 mx-auto">
+  <div class="col-6">
+    <input type="text" [(ngModel)]="nameTerm" name="nameTerm" class="form-control"
+      placeholder="Search Customer By First Name...">
+  </div>
+  <br>
+  <br>
+  <div class="col-12">
+    <h4>Company Employees Contacts Table</h4>
+  </div>
+
+  <table *ngIf="contacts.length; else noContact" class="table table-bordered align-middle mt-3">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Birthday</th>
+        <th>Phone No.</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let contact of contacts | fillterCustomerByDefault: 'name' :nameTerm index as i">
+        <td class="text-center fw-bold">{{i + 1}}.</td>
+        <td>{{contact.name}}</td>
+        <td>{{contact.email}}</td>
+        <td>{{contact.birthday | date: 'dd/MM/yyyy'}}</td>
+        <td>
+          <ul *ngIf="contact.phones.length; else noPhones">
+            <li *ngFor=" let phone of contact.phones">{{phone}}</li>
+          </ul>
+          <ng-template #noPhones>
+            <p><i>No Phone...</i></p>
+          </ng-template>
+        </td>
+
+
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noContact>
+    <p><i>No Contacts...</i></p>
+  </ng-template>
+
+</div>
